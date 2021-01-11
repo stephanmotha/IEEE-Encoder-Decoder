@@ -1,44 +1,59 @@
+#using string
 hi = ''
 
 def wholeToBin(num: int, bin: str):
     if num==0 and bin=='':
-        bin += 0
+        return 0
 
-    if num==0:
-
-        return None
+    elif num==0:
+        return bin
 
     new = num // 2
     addedDigit = str(num%2)
     bin += addedDigit
-    print(bin)
-    wholeToBin(new, bin)
-    return bin
+
+    return wholeToBin(new, bin)
 
 
-wholeToBin(263, hi)
-print(hi)
+print(wholeToBin(263, hi)[::-1])
 
 
-sample = []
+#using list
+# sample = []
+# def wholeToBin(num: int, bin: list):
+#     if num==0 and bin==[]:
+#         bin.append(0)
+#
+#     if num==0:
+#         return None
+#
+#     new = num // 2
+#     addedDigit = str(num%2)
+#     bin.append(addedDigit)
+#
+#     wholeToBin(new, bin)
+#
+# sample.reverse()
+# wholeToBin(263, sample)
+# print(''.join(sample))
 
 
-def wholeToBin(num: int, bin: list):
-    if num==0 and bin==[]:
-        bin += 0
+def decimalToBin(num: int, bin: str):
+    if len(bin)>10:
+        return bin
+    if num==0 and bin=='':
+        return 0
 
-    if num==0:
-
-        return None
-
-    new = num // 2
-    addedDigit = str(num%2)
-    bin.append(addedDigit)
-    #print(bin)
-    wholeToBin(new, bin)
+    elif num==0:
+        return bin
 
 
-wholeToBin(263, hi)
-print(''.join(hi.sample()))
+    temp = num*2
+    addedDigit = str(temp)[0]
+    new = float(str(num * 2)[1:])
+    print(new)
+    bin += addedDigit
 
+    return decimalToBin(new, bin)
 
+print(decimalToBin(0.3, ''))
