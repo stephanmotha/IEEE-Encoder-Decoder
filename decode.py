@@ -45,27 +45,22 @@ def numToSciNot(num: float):
     else:
         wholeDecimal = str(num).split(".")
 
-    # if -1 < num < 1:
-
-
-    # print(wholeDecimal)
-
     floatPortion = floatToBin(float("."+wholeDecimal[1]), '')
 
-    # print(floatPortion)
 
     if -1 < num < 1:
         wholeBin = floatPortion
         exp = (wholeBin.find('1')+1)*-1
 
-        print(wholeBin[abs(exp)-1:])
-        print(exp)
-
         return [wholeBin[abs(exp)-1:], exp]
 
-    # print(floatPortion)
     intPortion = intToBin(int(wholeDecimal[0]), '')[::-1]
-    wholeBin = intPortion+floatPortion
+
+    if floatPortion != '0':
+        wholeBin = intPortion+floatPortion
+
+    else:
+        wholeBin = intPortion
 
 
     return [wholeBin, len(intPortion)-1]
@@ -81,7 +76,8 @@ def sciNotToIEEE(SciNot: list, original:float):
         signBit = '1'
 
     # 8 exponent bits
-    if SciNot[1] != 0:
+
+    if SciNot[1] != '0':
         expBias = SciNot[1]+127
     else:
         expBias = 0
@@ -89,6 +85,7 @@ def sciNotToIEEE(SciNot: list, original:float):
     expToBin = intToBin(expBias, '')[::-1]
     if len(expToBin)<8:
         expToBin = "0"*(8-len(expToBin)) + expToBin
+
 
 
     # 23 bit mantissa
@@ -106,6 +103,8 @@ def Decoder(num:float):
 
     return answer
 
-print(Decoder(0))
+print(Decoder(3.5))
 
 
+# 00111111100000000000000000000000
+# 00111111100000000000000000000000
