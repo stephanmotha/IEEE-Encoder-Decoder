@@ -37,9 +37,9 @@ def calc_mantissa_val(mantissa_bits):
 # about the values 
 def general_form(sign_bit, mantissa_val, exp_bias, exponent_bits, mantissa, exp_val):
 
-    sign = (-1)  int(sign_bit)
+    sign = (-1) ** int(sign_bit)
     val = 1 + mantissa_val
-    exp = 2  exp_bias
+    exp = 2 ** exp_bias
 
 
     return [sign_bit, exponent_bits, exp_val, exp_bias, mantissa,  mantissa_val, sign * val * exp]
