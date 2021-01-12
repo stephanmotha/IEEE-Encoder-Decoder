@@ -61,8 +61,10 @@ def numToSciNot(num: float):
     wholeDecimal = ''
     if num<0:
         wholeDecimal = str(num)[1:].split(".")
+    else:
+        wholeDecimal = str(num).split(".")
 
-    wholeDecimal = str(num).split(".")
+
     intPortion = intToBin(int(wholeDecimal[0]), '')[::-1]
     floatPortion = floatToBin(float("."+wholeDecimal[1]), '')
 
@@ -91,9 +93,10 @@ def sciNotToIEEE(SciNot: list, original:float):
     return signBit+expToBin+mantissa
 
 
-
 def Decoder(num:float):
     sciNot = numToSciNot(num)
     return sciNotToIEEE(sciNot, num)
 
 print(Decoder(263.3))
+#11000011100000111010011001100110
+#01000011100000111010011001100110
