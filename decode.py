@@ -39,7 +39,6 @@ def floatToBin(num: float, bin: str):
 def numToSciNot(num: float):
     wholeDecimal = ''
 
-
     if num<0:
         wholeDecimal = str(num)[1:].split(".")
     else:
@@ -77,16 +76,15 @@ def sciNotToIEEE(SciNot: list, original:float):
 
     # 8 exponent bits
 
-    if SciNot[1] != '0':
+    if SciNot[1] != 0 or SciNot[0] == '1':
         expBias = SciNot[1]+127
     else:
         expBias = 0
 
     expToBin = intToBin(expBias, '')[::-1]
+
     if len(expToBin)<8:
         expToBin = "0"*(8-len(expToBin)) + expToBin
-
-
 
     # 23 bit mantissa
     mantissa = SciNot[0][1:24]
@@ -103,8 +101,6 @@ def Decoder(num:float):
 
     return answer
 
-print(Decoder(3.5))
+print(Decoder(2))
 
 
-# 00111111100000000000000000000000
-# 00111111100000000000000000000000
